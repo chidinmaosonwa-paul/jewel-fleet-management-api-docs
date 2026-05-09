@@ -9,8 +9,7 @@
     "logo": {
       "darkMode": "https://cdn.scalar.com/marketing/landing/logo-dark.svg",
       "lightMode": "https://cdn.scalar.com/marketing/landing/logo-light.svg"
-    },
-    "theme": "moon"
+    }
   },
   "navigation": {
     "routes": {
