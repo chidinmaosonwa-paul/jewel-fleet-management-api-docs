@@ -1,57 +1,41 @@
-# Quickstart
+# Jewel Fleet Management API
 
-This is the Scalar Docs Starter Kit — a ready-to-use template for building beautiful documentation. Fork it, clone it, and make it your own. Everything here is meant to be modified, extended, or replaced to fit your project.
+A RESTful API for managing a travel company's fleet operations. Administrators manage vehicles, destinations, and journeys. Passengers browse schedules and book tickets. Drivers file post-journey reports.
 
-## 1. Preview Your Docs
+## Base URL
 
-Run a local development server to see your changes in real-time:
+The production API is available at:
 
-```bash
-npx @scalar/cli project preview
-```
+`https://jewels-fleet-management-api.onrender.com`
 
-This starts a live preview at `http://localhost:7971` where every edit you make is instantly visible.
+## Authentication
 
-Read more about [Development](development.md).
+All endpoints except `POST /api/auth/register` and `POST /api/auth/login` require a valid JWT token passed in the `Authorization` header using the Bearer scheme.
 
-## 2. Include OpenAPI Documents
+`Authorization: Bearer <your_token>`
 
-Drop your OpenAPI files into `docs/api-reference/`, and add them to `@scalar.config.json` to have them automatically become interactive API references.
+Get your token by calling the register or login endpoint first. Tokens expire after 24 hours. Re-authenticate via the login endpoint to get a fresh token.
 
-The starter kit includes an example OpenAPI document to show you how it works.
+## Roles & Permissions
 
-Read more about [API References](api-references.md)
+Every user account is assigned one of three roles at registration. The role determines which endpoints the user may access.
 
-## 3. Customize Everything
+| Role | Access |
+|---|---|
+| `admin` | Full access to all endpoints |
+| `driver` | Submit and view their own journey reports only |
+| `user` | Browse journeys, book and cancel their own tickets only |
 
-Make it yours with themes, custom CSS, and MDX. Configure your documentation structure, navigation, and styling through `scalar.config.json`.
+## Rate Limiting
 
-## 4. Publish Your Docs
+All endpoints are rate-limited to 100 requests per 15-minute window per IP address. Exceeding this limit returns a `429 Too Many Requests` response.
 
-First, authenticate with your Scalar account:
+## Error Format
 
-```bash
-npx @scalar/cli auth login
-```
+General errors return a `message` string:
 
-Then publish your documentation:
+`{ "message": "Journey not found" }`
 
-```bash
-npx @scalar/cli project publish
-```
+Validation errors return an `error` array, one entry per failed field:
 
-Your site will be available at `<your-slug>.apidocumentation.com`.
-
-## Stuck?
-
-Check whether your `scalar.config.json` is valid:
-
-```bash
-npx @scalar/cli project check-config
-```
-
-We're here to help:
-
-- [Email support@scalar.com](mailto:support@scalar.com)
-- [Chat with us on Discord](https://discord.gg/scalar)
-- [Schedule a call](https://scalar.cal.com/scalar/chat-with-scalar)
+`{ "error": ["\"email\" is required", "\"password\" must be at least 6 characters long"] }`
