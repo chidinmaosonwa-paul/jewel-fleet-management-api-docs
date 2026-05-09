@@ -19,7 +19,9 @@
         "children": {
           "/api": {
             "type": "openapi",
-            "filepath": "docs/api-reference/openapi.yaml",
+            "namespace": "chidinmaosonwa-paul",
+            "slug": "jewel-fleet-management-api",
+            "version": "1.0.0",
             "title": "API Reference",
             "icon": "phosphor/regular/plug"
           }
