@@ -2,8 +2,8 @@
   "$schema": "https://registry.scalar.com/@scalar/schemas/config",
   "scalar": "2.0.0",
   "info": {
-    "title": "Jewel Fleet Management API",
-    "description": "API documentation for the Jewel Fleet Management system"
+    "title": "Safaraa API",
+    "description": "API documentation for the Safaraa API"
   },
   "siteConfig": {
     "logo": {
@@ -15,11 +15,11 @@
     "routes": {
       "/": {
         "type": "group",
-        "title": "Jewel Fleet Management API",
+        "title": "Safaraa API",
         "children": {
           "/api": {
             "type": "openapi",
-            "namespace": "chidinmaosonwa-paul",
+            "namespace": "chidinma",
             "slug": "safaraa",
             "version": "1.0.0",
             "title": "API Reference",
