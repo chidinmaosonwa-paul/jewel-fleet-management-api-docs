@@ -20,7 +20,7 @@
           "/api": {
             "type": "openapi",
             "namespace": "chidinmaosonwa-paul",
-            "slug": "jewel-fleet-management-api",
+            "slug": "safaraa",
             "version": "1.0.0",
             "title": "API Reference",
             "icon": "phosphor/regular/plug"
